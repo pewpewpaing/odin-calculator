@@ -26,7 +26,8 @@ let operator = null;
 // firstNum (shows first)
 // operator (shows first)
 // secondNum (shows second)
-// operator or equals (compute and shows first) and secondNum = null
+// operator (calculate and shows first) // second = null (because it expects seond operator to compute)
+// equals (calculate and shows first) // operator = null (because it expects firstNum or operator again)
 
 function operate(firstNum, secondNum, operator) {
     switch (operator) {
@@ -44,7 +45,6 @@ function operate(firstNum, secondNum, operator) {
 function calculate() {
     firstNum = operate(firstNum, secondNum, operator);
     display.textContent = firstNum;
-    secondNum = null;
 }
 
 digitsContainer.addEventListener("click", (e) => {
@@ -60,6 +60,7 @@ digitsContainer.addEventListener("click", (e) => {
 operatorsContainer.addEventListener("click", (e) => {
     if (firstNum !== null && secondNum !== null) {
         calculate();
+        secondNum = null;
     }
 
     operator = e.target.dataset.value;
@@ -67,5 +68,7 @@ operatorsContainer.addEventListener("click", (e) => {
 
 equalsButton.addEventListener("click", () => {
     calculate();
+    secondNum = null;
+    operator = null;
 })
 
