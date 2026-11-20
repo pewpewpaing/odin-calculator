@@ -23,8 +23,10 @@ let firstNum = null;
 let secondNum = null;
 let operator = null;
 
-// firstNum == null && secondNum == null && operator == null -> firstNum = num
-// firstNum == null && 
+// firstNum (shows first)
+// operator (shows first)
+// secondNum (shows second)
+// operator or equals (compute and shows first) and secondNum = null
 
 function operate(firstNum, secondNum, operator) {
     switch (operator) {
@@ -39,24 +41,31 @@ function operate(firstNum, secondNum, operator) {
     }
 }
 
+function calculate() {
+    firstNum = operate(firstNum, secondNum, operator);
+    display.textContent = firstNum;
+    secondNum = null;
+}
+
 digitsContainer.addEventListener("click", (e) => {
     if (operator === null) {
         firstNum = Number(firstNum) * 10 + Number(e.target.dataset.value);
         display.textContent = firstNum;
     } else {
         secondNum = Number(secondNum) * 10 + Number(e.target.dataset.value);
-        display.textContent += e.target.dataset.value;
+        display.textContent = secondNum;
     }
 });
 
 operatorsContainer.addEventListener("click", (e) => {
+    if (firstNum !== null && secondNum !== null) {
+        calculate();
+    }
+
     operator = e.target.dataset.value;
-    display.textContent += e.target.textContent;
 });
 
 equalsButton.addEventListener("click", () => {
-    console.log(firstNum, secondNum, operator);
-    firstNum = operate(firstNum, secondNum, operator);
-    display.textContent = firstNum;
+    calculate();
 })
 
