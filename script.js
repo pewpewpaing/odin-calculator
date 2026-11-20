@@ -1,3 +1,6 @@
+const display = document.querySelector(".display");
+const digitsContainer = document.querySelector(".digits-container");
+
 function add(firstNum, secondNum) {
     return firstNum + secondNum;
 }
@@ -30,3 +33,8 @@ function operate(operator, firstNum, secondNum) {
             return divide(firstNum, secondNum);
     }
 }
+
+digitsContainer.addEventListener("click", (e) => {
+    firstNum = Number(e.target.dataset.value);
+    display.textContent = firstNum;
+});
