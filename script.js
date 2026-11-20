@@ -23,6 +23,9 @@ let firstNum = null;
 let secondNum = null;
 let operator = null;
 
+// firstNum == null && secondNum == null && operator == null -> firstNum = num
+// firstNum == null && 
+
 function operate(firstNum, secondNum, operator) {
     switch (operator) {
         case "+":
@@ -37,12 +40,12 @@ function operate(firstNum, secondNum, operator) {
 }
 
 digitsContainer.addEventListener("click", (e) => {
-    if (firstNum === null) {
-        firstNum = Number(e.target.dataset.value);
+    if (operator === null) {
+        firstNum = Number(firstNum) * 10 + Number(e.target.dataset.value);
         display.textContent = firstNum;
     } else {
-        secondNum = Number(e.target.dataset.value);
-        display.textContent += secondNum;
+        secondNum = Number(secondNum) * 10 + Number(e.target.dataset.value);
+        display.textContent += e.target.dataset.value;
     }
 });
 
@@ -52,8 +55,8 @@ operatorsContainer.addEventListener("click", (e) => {
 });
 
 equalsButton.addEventListener("click", () => {
+    console.log(firstNum, secondNum, operator);
     firstNum = operate(firstNum, secondNum, operator);
-    console.log(firstNum);
     display.textContent = firstNum;
 })
 
