@@ -46,6 +46,7 @@ function operate(firstNum, secondNum, operator) {
 
 function calculate() {
     firstNum = operate(firstNum, secondNum, operator);
+    firstNum = +firstNum.toFixed(10);
     display.textContent = firstNum;
 }
 
