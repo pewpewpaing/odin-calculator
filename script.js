@@ -75,6 +75,10 @@ operatorsContainer.addEventListener("click", (e) => {
 });
 
 equalsButton.addEventListener("click", () => {
+    if (firstNum === null && secondNum === null) return;
+
+    if (secondNum == null) secondNum = firstNum;
+
     calculate();
     secondNum = null;
     operator = null;
