@@ -22,12 +22,14 @@ function divide(firstNum, secondNum) {
 let firstNum = null;
 let secondNum = null;
 let operator = null;
+let firstTime = true;
 
 // firstNum (shows first)
 // operator (shows first)
 // secondNum (shows second)
 // operator (calculate and shows first) // second = null (because it expects seond operator to compute)
-// equals (calculate and shows first) // operator = null (because it expects firstNum or operator again)
+// equals (calculate and shows first) // operator = null (because it expects firstNum or operator again) // need to fix this
+
 
 function operate(firstNum, secondNum, operator) {
     switch (operator) {
@@ -49,7 +51,12 @@ function calculate() {
 
 digitsContainer.addEventListener("click", (e) => {
     if (operator === null) {
-        firstNum = Number(firstNum) * 10 + Number(e.target.dataset.value);
+        if (firstTime) {
+            firstNum = Number(e.target.dataset.value);
+            firstTime = false;
+        } else {
+            firstNum = Number(firstNum) * 10 + Number(e.target.dataset.value);
+        }
         display.textContent = firstNum;
     } else {
         secondNum = Number(secondNum) * 10 + Number(e.target.dataset.value);
@@ -70,5 +77,6 @@ equalsButton.addEventListener("click", () => {
     calculate();
     secondNum = null;
     operator = null;
+    firstTime = true;
 })
 
