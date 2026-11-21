@@ -90,5 +90,6 @@ clearButton.addEventListener("click", () => {
     firstNum = null;
     secondNum = null;
     operator = null;
+    display.textContent = "";
 });
 
