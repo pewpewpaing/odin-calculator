@@ -2,6 +2,7 @@ const display = document.querySelector(".display");
 const digitsContainer = document.querySelector(".digits-container");
 const operatorsContainer = document.querySelector(".operators-container");
 const equalsButton = document.querySelector(".equals");
+const clearButton = document.querySelector(".clear");
 
 function add(firstNum, secondNum) {
     return firstNum + secondNum;
@@ -83,5 +84,11 @@ equalsButton.addEventListener("click", () => {
     secondNum = null;
     operator = null;
     firstTime = true;
-})
+});
+
+clearButton.addEventListener("click", () => {
+    firstNum = null;
+    secondNum = null;
+    operator = null;
+});
 
