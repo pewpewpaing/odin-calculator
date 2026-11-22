@@ -1,5 +1,42 @@
+.calculator {
+    display: flex;
+    flex-wrap: wrap;
+    width: 215px;
+    justify-content: space-between;
+}
+
 .display {
     height: 30px;
     border: 2px solid #222;
+    flex: 1;
+    margin-bottom: 5px;
 }
 
+.container {
+    display: flex;
+    gap: 5px;
+}
+
+.left {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.right {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+button {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.operators {
+    background-color: #e49b2d;
+    border: none;
+}

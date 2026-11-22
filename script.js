@@ -1,6 +1,8 @@
 const display = document.querySelector(".display");
-const digitsContainer = document.querySelector(".digits-container");
-const operatorsContainer = document.querySelector(".operators-container");
+// const digitsContainer = document.querySelector(".digits-container");
+const digits = document.querySelectorAll(".digits");
+// const operatorsContainer = document.querySelector(".operators-container");
+const operators = document.querySelectorAll(".operators");
 const equalsButton = document.querySelector(".equals");
 const clearButton = document.querySelector(".clear");
 
@@ -51,7 +53,7 @@ function calculate() {
     display.textContent = firstNum;
 }
 
-digitsContainer.addEventListener("click", (e) => {
+digits.forEach(btn => btn.addEventListener("click", (e) => {
     if (operator === null) {
         if (firstTime) {
             firstNum = Number(e.target.dataset.value);
@@ -64,16 +66,16 @@ digitsContainer.addEventListener("click", (e) => {
         secondNum = Number(secondNum) * 10 + Number(e.target.dataset.value);
         display.textContent = secondNum;
     }
-});
+}));
 
-operatorsContainer.addEventListener("click", (e) => {
+operators.forEach(btn => btn.addEventListener("click", (e) => {
     if (firstNum !== null && secondNum !== null) {
         calculate();
         secondNum = null;
     }
 
     operator = e.target.dataset.value;
-});
+}));
 
 equalsButton.addEventListener("click", () => {
     if (firstNum === null && secondNum === null) return;
